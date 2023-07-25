@@ -1,0 +1,38 @@
+<odoo>
+    <record model="ir.ui.view" id="view_subject_form">
+      <field name="name">Subject_view</field>
+      <field name="model">subject_model</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <group>
+                    <field name="name"/>
+                    <field name="many_student" widget="many2many_tags"/>
+                </group>
+            </group>
+            
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_subject_tree">
+      <field name="name">Subject_view_tree</field>
+      <field name="model">subject_model</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="many_student" widget="many2many_tags"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_subject_form">
+      <field name="name">Subject_action</field>
+      <field name="res_model">subject_model</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_subject" name="Subject" parent="menu_school" action="action_subject_form"/>
+</odoo>

@@ -1,0 +1,39 @@
+<odoo>
+    <data noupdate="0">
+        <record id="module_category_student" model="ir.module.category">
+            <field name="name">Chức vụ</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="group_student_user" model="res.groups">
+            <field name="name">Student</field>
+            <field name="category_id" ref="module_category_student"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_student_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="module_category_student"/>
+            <field name="implied_ids" eval="[(4, ref('group_student_user'))]"/>
+        </record>
+
+        <record id="group_student_user_manager" model="res.groups">
+            <field name="name">manager_student</field>
+            <field name="category_id" ref="module_category_student"/>
+            <field name="implied_ids" eval="[(4, ref('group_student_manager'))]"/>
+        </record>
+    </data>
+</odoo>
+
+
+<!-- <odoo>
+    <data noupdate="0">
+        <record id="test_phan_quyen_cap_2" model="ir.rule"> 
+            <field name="name">abc</field>
+            <field name="model_id" ref="model_tênmodel"/>
+            <field name="domain_force">[(điều kiện ("field", "==", "j đấy"))]</field>
+            <field name="perm_read" eval="True"/>
+            tương tự
+        </record>
+    </data>
+</odoo> -->

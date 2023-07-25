@@ -1,0 +1,73 @@
+<odoo>
+    <record model="ir.ui.view" id="view_student_form">
+      <field name="name">Student_form</field>
+      <field name="model">student_model</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="many_subject" widget="many2many_tags"/>
+              </group>
+              <group>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="name_teacher"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_student_tree">
+      <field name="name">Student_tree</field>
+      <field name="model">student_model</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id"/>
+          <field name="name"/>
+          <field name="age"/>
+          <field name="gender"/>
+          <field name="many_subject" widget="many2many_tags"/>
+          <field name="email"/>
+          <field name="phone"/>
+          <field name="name_teacher"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_student_search">
+      <field name="name">Student_search</field>
+      <field name="model">student_model</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name" string="name_student" filter_domain="['|', ('name', 'ilike', self), ('phone', 'ilike', self)]"/>
+          <field name="age"/>
+          <field name="gender"/>
+          <field name="many_subject" widget="many2many_tags"/>
+          <field name="email"/>
+          <field name="phone"/>
+          <field name="name_teacher"/>
+
+          <!-- <filter name="name" string="name_student" domain="['|', ('name', 'ilike', 'self'), ('phone', 'ilike', 'self')]"/> -->
+          <!-- <filter name="many_subject" string="Subject_student" domain="[('many_subject', '==', 'học máy')]"/> -->
+        </search>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_student_form">
+      <field name="name">Student_action</field>
+      <field name="res_model">student_model</field>
+      <field name="view_mode">tree,form</field>
+      <field name="search_view_id" ref="School.view_student_search"/>
+    </record>
+
+    <menuitem id="menu_school" name="School_menu"/>
+    <menuitem id="menu_student" name="Student" parent="menu_school" action="action_student_form"/>
+</odoo>

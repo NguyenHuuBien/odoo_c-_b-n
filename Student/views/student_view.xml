@@ -1,0 +1,146 @@
+<odoo>
+    <record model="ir.ui.view" id="view_school_form">
+      <field name="name">school.form</field>
+      <field name="model">Student</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="age"/>
+              <!-- <field name="email"/>
+              <field name="phone"/> -->
+            </group>
+            <group>
+              <!-- <field name="name"/>
+              <field name="age"/> -->
+              <field name="email"/>
+              <field name="phone"/>
+              <field name="manager_student_many"/>
+            </group>
+
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_school_form">
+      <field name="name">School_action</field>
+      <field name="res_model">student</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_school" name="School_menu"/>
+    <menuitem id="menu_school_1" name="School" parent="menu_school"/>
+    <menuitem id="menu_school_2" name="School_1" parent="menu_school_1" action="action_school_form"/>
+
+
+    <record model="ir.ui.view" id="view_school_form_1">
+      <field name="name">school.form</field>
+      <field name="model">manager_student</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="age"/>
+              <field name="email"/>
+              <field name="phone"/>
+              <field name="position"/>
+              <field name="manager_student_many"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_school_form_1">
+      <field name="name">School_action_1</field>
+      <field name="res_model">manager_student</field>
+      <field name="view_mode">form</field>
+    </record>
+
+    <menuitem id="menu_school_x" name="School_1" parent="menu_school"/>
+    <menuitem id="menu_school_3" name="School_2" parent="menu_school_x" action="action_school_form"/>
+    <menuitem id="menu_school_4" name="School_3" parent="menu_school_x" action="action_school_form_1"/>
+</odoo>
+
+
+
+
+
+
+<!-- form_view đầy đủ -->
+<!-- <record id="view_employee_form" model="ir.ui.view">
+    <field name="name">employee.form</field>
+    <field name="model">hr.employee</field>
+    <field name="arch" type="xml">
+        <form string="Employee Form">
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="gender"/>
+                    <field name="date_of_birth"/>
+                </group>
+                <group>
+                    <field name="department_id"/>
+                    <field name="job_title"/>
+                    <field name="address" widget="text"/>
+                </group>
+                <notebook>
+                    <page string="Personal Information">
+                        <group>
+                            <field name="personal_phone"/>
+                            <field name="personal_email"/>
+                            <field name="emergency_contact"/>
+                        </group>
+                    </page>
+                    <page string="Work Experience">
+                        <field name="work_experience_ids" mode="tree,kanban">
+                            <tree>
+                                <field name="company_name"/>
+                                <field name="job_position"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </tree>
+                            <kanban>
+                                <field name="company_name"/>
+                                <field name="job_position"/>
+                            </kanban>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+            <footer>
+                <button name="action_save" string="Save" type="object" class="btn-primary"/>
+                <button name="action_cancel" string="Cancel" type="object" class="btn-secondary" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+</record> -->
+
+
+
+<!-- 
+search)view đầy đủ
+<record id="view_employee_search" model="ir.ui.view">
+    <field name="name">employee.search</field>
+    <field name="model">hr.employee</field>
+    <field name="arch" type="xml">
+        <search string="Employee Search">
+            <field name="name" string="Name" filter_domain="[('name', 'ilike', self)]"/>
+            <field name="department_id" string="Department" domain="[('department_id', '=', self)]"/>
+            <field name="job_title" string="Job Title" filter_domain="[('job_title', 'ilike', self)]"/>
+            <field name="date_of_birth" string="Date of Birth"/>
+            <field name="active" string="Active"/>
+            <filter string="Active Employees" name="active_employees" domain="[('active', '=', True)]"/>
+            <separator string="Additional Filters"/>
+            <field name="gender" string="Gender"/>
+            <field name="address" string="Address" filter_domain="[('address', 'ilike', self)]"/>
+            <field name="tags_ids" widget="many2many_tags" string="Tags"/>
+        </search>
+    </field>
+</record> -->
